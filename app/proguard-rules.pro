@@ -1,0 +1,7 @@
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.**
+-keepclassmembers class kotlinx.serialization.json.** { *** Companion; }
+-keepclasseswithmembers class kotlinx.serialization.json.** { kotlinx.serialization.KSerializer serializer(...); }
+-keep,includedescriptorclasses class com.cashoutdashboard.app.**$$serializer { *; }
+-keepclassmembers class com.cashoutdashboard.app.** { *** Companion; }
+-keepclasseswithmembers class com.cashoutdashboard.app.** { kotlinx.serialization.KSerializer serializer(...); }
