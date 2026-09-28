@@ -94,7 +94,7 @@ internal fun LazyListScope.overviewTab(
     if (!hasGoal) item(key = "goal") { GoalCard(d, settings, today, onSaveGoal) }
 }
 
-/** The default dashboard: the headline number, the goal, and what to do next. Everything else lives in advanced. */
+/** The optional simple dashboard: the headline number, the goal, and what to do next. */
 internal fun LazyListScope.simpleTab(
     d: DashData,
     settings: AppSettings,
@@ -111,7 +111,7 @@ internal fun LazyListScope.simpleTab(
     if (d.shifts.isNotEmpty()) item(key = "next") { NextStepsCard(d, onOpenMetric) }
     item(key = "more") {
         Text(
-            "Want every chart and stat? Turn on Advanced dashboard in Settings.",
+            "Want every chart and stat? Turn off Simple dashboard in Settings.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,

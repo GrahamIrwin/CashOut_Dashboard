@@ -198,7 +198,7 @@ fun DashboardScreen(vm: AppViewModel, onOpenShift: (String) -> Unit, onAdd: () -
                     onBack = { detailName = null },
                     onOpenShift = onOpenShift,
                 )
-            } else if (!settings.advancedDashboard) {
+            } else if (settings.simpleDashboard) {
                 LazyColumn(Modifier.fillMaxSize(), contentPadding = listPadding, verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     simpleTab(data, settings, today, onOpenMetric = openMetric, onSaveGoal = saveGoal)
                 }

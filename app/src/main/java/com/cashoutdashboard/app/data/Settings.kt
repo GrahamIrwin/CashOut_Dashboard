@@ -21,8 +21,8 @@ data class AppSettings(
     val payPeriodAnchor: String? = null,
     val goalAmount: Double? = null,
     val goalPeriod: GoalPeriod = GoalPeriod.MONTH,
-    /** Show every tab, chart and stat instead of the simple "what to do next" dashboard. */
-    val advancedDashboard: Boolean = false,
+    /** Show the simple "what to do next" dashboard instead of every tab, chart and stat. */
+    val simpleDashboard: Boolean = false,
 ) {
     val payPeriodAnchorDate: LocalDate? get() = payPeriodAnchor?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
 }
@@ -37,7 +37,7 @@ class SettingsStore(context: Context) {
         payPeriodAnchor = prefs.getString("payAnchor", null),
         goalAmount = prefs.getFloat("goalAmount", -1f).takeIf { it > 0 }?.toDouble(),
         goalPeriod = runCatching { GoalPeriod.valueOf(prefs.getString("goalPeriod", null) ?: "") }.getOrDefault(GoalPeriod.MONTH),
-        advancedDashboard = prefs.getBoolean("advancedDashboard", false),
+        simpleDashboard = prefs.getBoolean("simpleDashboard", false),
     )
 
     fun update(transform: (AppSettings) -> AppSettings) {
@@ -47,8 +47,8 @@ class SettingsStore(context: Context) {
             .putString("payAnchor", s.payPeriodAnchor)
             .putFloat("goalAmount", s.goalAmount?.toFloat() ?: -1f)
             .putString("goalPeriod", s.goalPeriod.name)
-            .putBoolean("advancedDashboard", s.advancedDashboard)
-            .remove("engine").remove("apiKey").remove("model")
+            .putBoolean("simpleDashboard", s.simpleDashboard)
+            .remove("advancedDashboard").remove("engine").remove("apiKey").remove("model")
             .apply()
         _settings.value = s
     }

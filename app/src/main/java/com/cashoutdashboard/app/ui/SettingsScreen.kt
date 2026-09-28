@@ -55,10 +55,10 @@ fun SettingsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         ListGroup("Dashboard") {
             ListRow(
                 Icons.Filled.Dashboard,
-                "Advanced dashboard",
-                "Show every tab, chart and stat",
-                onClick = { vm.updateSettings { it.copy(advancedDashboard = !it.advancedDashboard) } },
-                trailing = { Switch(settings.advancedDashboard, { v -> vm.updateSettings { it.copy(advancedDashboard = v) } }) },
+                "Simple dashboard",
+                "Just your tips, your goal and how to earn more",
+                onClick = { vm.updateSettings { it.copy(simpleDashboard = !it.simpleDashboard) } },
+                trailing = { Switch(settings.simpleDashboard, { v -> vm.updateSettings { it.copy(simpleDashboard = v) } }) },
             )
             ListDivider()
             ListRow(
@@ -104,7 +104,7 @@ fun SettingsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         }
 
         Text(
-            "Cashout Dashboard 1.1\nEverything is read and stored on your phone.",
+            "Cashout Dashboard 1.3\nEverything is read and stored on your phone.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
