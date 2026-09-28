@@ -7,3 +7,5 @@ local.properties
 keystore/*.jks
 .backup/
 *.apk
+cashout_photos/
+testdata/private/

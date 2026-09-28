@@ -11,6 +11,10 @@ Copy it to the phone (USB, Google Drive, email to yourself), tap it, and allow
 "Install unknown apps" for whichever app you opened it from. Or with USB debugging on:
 `adb install -r CashoutDashboard.apk`.
 
+## Try it with demo data
+`demo/demo-backup.json` is about five months of made-up shifts. Copy it to the phone, then in the app go to
+**Settings → Restore from backup** and pick it. Remove the demo shifts later with **Delete all shifts**.
+
 ## Build
 Requires the Android SDK (platform 34) and a JDK 17+ (Android Studio's bundled JBR works):
 ```
@@ -29,6 +33,9 @@ Everything runs on the phone; nothing is uploaded.
 - The handwritten number on the slip is the **cash take-home**; it's left blank for you to enter.
 
 ## Tests
-- `./gradlew testDebugUnitTest` — stats and validation tests, plus `ParserAccuracyTest`, which replays real OCR output
-  of the 22 sample photos (`testdata/ocr_dump.json`) against a hand-made answer key (`testdata/ground_truth.json`).
-- `OcrAccuracyTest` (instrumented) regenerates `ocr_dump.json` on a device/emulator.
+- `./gradlew testDebugUnitTest` runs the stats and validation tests, plus `ParserAccuracyTest`. That test replays OCR output
+  of fake cashout slips (`testdata/ocr_dump.json`) against their answer key (`testdata/ground_truth.json`).
+- The fake slips, their photos (`testdata/photos/`) and the demo backup all come from `python testdata/make_fake_data.py`.
+  The fake OCR output is simulated; `OcrAccuracyTest` (instrumented) runs real on-device OCR over the photos to regenerate it.
+- Real slips stay off GitHub: put their `ocr_dump.json` and `ground_truth.json` in `testdata/private/` (gitignored) and
+  `ParserAccuracyTest` checks them too.

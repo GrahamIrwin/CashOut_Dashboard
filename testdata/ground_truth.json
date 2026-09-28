@@ -1,0 +1,567 @@
+[
+ {
+  "file": "fake_01.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-05-26",
+  "dayOfWeek": "TUESDAY",
+  "totalChecks": 9,
+  "openTime": "16:14",
+  "closeTime": "22:05",
+  "reference": 14,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 0.0,
+    "count": 0
+   },
+   {
+    "type": "MASTCH",
+    "amount": 158.38,
+    "count": 1
+   },
+   {
+    "type": "DEBITC",
+    "amount": 404.38,
+    "count": 3
+   },
+   {
+    "type": "VISA",
+    "amount": 432.55,
+    "count": 4
+   },
+   {
+    "type": "BIRTHD",
+    "amount": 183.84,
+    "count": 2
+   }
+  ],
+  "paymentTotal": 1179.15,
+  "tips": 169.45,
+  "net": 1009.7,
+  "foodSales": 901.62,
+  "foodVolume": 50,
+  "lwbSales": 60.0,
+  "lwbVolume": 7,
+  "sales": 961.62,
+  "covers": 23,
+  "avgCheck": 41.81,
+  "staffChecks": 0,
+  "transfersOut": [],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_02.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-08-11",
+  "dayOfWeek": "TUESDAY",
+  "totalChecks": 5,
+  "openTime": "19:10",
+  "closeTime": "01:07",
+  "reference": 64,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 0.0,
+    "count": 0
+   },
+   {
+    "type": "DEBITC",
+    "amount": 274.09,
+    "count": 2
+   },
+   {
+    "type": "BIRTHD",
+    "amount": 154.5,
+    "count": 1
+   },
+   {
+    "type": "MASTCH",
+    "amount": 348.62,
+    "count": 3
+   }
+  ],
+  "paymentTotal": 777.21,
+  "tips": 88.04,
+  "net": 689.17,
+  "foodSales": 603.35,
+  "foodVolume": 34,
+  "lwbSales": 53.0,
+  "lwbVolume": 6,
+  "sales": 656.35,
+  "covers": 14,
+  "avgCheck": 46.88,
+  "staffChecks": 1,
+  "transfersOut": [],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_03.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-08-01",
+  "dayOfWeek": "SATURDAY",
+  "totalChecks": 17,
+  "openTime": "16:37",
+  "closeTime": "22:38",
+  "reference": 58,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 293.97,
+    "count": 1
+   },
+   {
+    "type": "MASTCH",
+    "amount": 1075.91,
+    "count": 9
+   },
+   {
+    "type": "AMEX",
+    "amount": 903.03,
+    "count": 8
+   }
+  ],
+  "paymentTotal": 2272.91,
+  "tips": 261.09,
+  "net": 2011.82,
+  "foodSales": 1810.02,
+  "foodVolume": 101,
+  "lwbSales": 106.0,
+  "lwbVolume": 12,
+  "sales": 1916.02,
+  "covers": 44,
+  "avgCheck": 43.55,
+  "staffChecks": 0,
+  "transfersOut": [
+   {
+    "name": "Riley",
+    "amount": 57.48
+   }
+  ],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_04.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-08-19",
+  "dayOfWeek": "WEDNESDAY",
+  "totalChecks": 7,
+  "openTime": "19:24",
+  "closeTime": "00:35",
+  "reference": 66,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 0.0,
+    "count": 0
+   },
+   {
+    "type": "MASTCH",
+    "amount": 438.61,
+    "count": 4
+   },
+   {
+    "type": "QSA",
+    "amount": 519.79,
+    "count": 4
+   }
+  ],
+  "paymentTotal": 958.4,
+  "tips": 116.43,
+  "net": 841.97,
+  "foodSales": 697.88,
+  "foodVolume": 39,
+  "lwbSales": 104.0,
+  "lwbVolume": 12,
+  "sales": 801.88,
+  "covers": 17,
+  "avgCheck": 47.17,
+  "staffChecks": 1,
+  "transfersOut": [],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_05.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-05-04",
+  "dayOfWeek": "MONDAY",
+  "totalChecks": 5,
+  "openTime": "16:40",
+  "closeTime": "22:47",
+  "reference": 4,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 20.15,
+    "count": 1
+   },
+   {
+    "type": "DEBITC",
+    "amount": 178.66,
+    "count": 1
+   },
+   {
+    "type": "BIRTHD",
+    "amount": 207.92,
+    "count": 2
+   },
+   {
+    "type": "MASTCH",
+    "amount": 289.71,
+    "count": 2
+   },
+   {
+    "type": "AMEX",
+    "amount": 102.9,
+    "count": 1
+   }
+  ],
+  "paymentTotal": 799.34,
+  "tips": 103.99,
+  "net": 695.35,
+  "foodSales": 534.74,
+  "foodVolume": 30,
+  "lwbSales": 127.5,
+  "lwbVolume": 14,
+  "sales": 662.24,
+  "covers": 13,
+  "avgCheck": 50.94,
+  "staffChecks": 1,
+  "transfersOut": [
+   {
+    "name": "Sam",
+    "amount": 19.87
+   }
+  ],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_06.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-08-21",
+  "dayOfWeek": "FRIDAY",
+  "totalChecks": 11,
+  "openTime": "10:44",
+  "closeTime": "18:49",
+  "reference": 68,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 168.64,
+    "count": 1
+   },
+   {
+    "type": "MASTCH",
+    "amount": 440.09,
+    "count": 4
+   },
+   {
+    "type": "RDM CA",
+    "amount": 573.15,
+    "count": 5
+   },
+   {
+    "type": "DEBITC",
+    "amount": 250.49,
+    "count": 2
+   }
+  ],
+  "paymentTotal": 1432.37,
+  "tips": 210.99,
+  "net": 1221.38,
+  "foodSales": 975.22,
+  "foodVolume": 54,
+  "lwbSales": 188.0,
+  "lwbVolume": 21,
+  "sales": 1163.22,
+  "covers": 28,
+  "avgCheck": 41.54,
+  "staffChecks": 0,
+  "transfersOut": [
+   {
+    "name": "Casey",
+    "amount": 34.9
+   }
+  ],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_07.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-08-22",
+  "dayOfWeek": "SATURDAY",
+  "totalChecks": 13,
+  "openTime": "19:38",
+  "closeTime": "01:44",
+  "reference": 69,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 134.16,
+    "count": 1
+   },
+   {
+    "type": "RDM CA",
+    "amount": 861.76,
+    "count": 7
+   },
+   {
+    "type": "DEBITC",
+    "amount": 818.05,
+    "count": 7
+   }
+  ],
+  "paymentTotal": 1813.97,
+  "tips": 219.52,
+  "net": 1594.45,
+  "foodSales": 1263.52,
+  "foodVolume": 70,
+  "lwbSales": 255.0,
+  "lwbVolume": 28,
+  "sales": 1518.52,
+  "covers": 33,
+  "avgCheck": 46.02,
+  "staffChecks": 0,
+  "transfersOut": [
+   {
+    "name": "Casey",
+    "amount": 45.56
+   }
+  ],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_08.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-06-03",
+  "dayOfWeek": "WEDNESDAY",
+  "totalChecks": 4,
+  "openTime": "10:46",
+  "closeTime": "17:22",
+  "reference": 18,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 93.25,
+    "count": 1
+   },
+   {
+    "type": "AMEX",
+    "amount": 260.92,
+    "count": 2
+   },
+   {
+    "type": "QSA",
+    "amount": 128.32,
+    "count": 1
+   },
+   {
+    "type": "BIRTHD",
+    "amount": 109.78,
+    "count": 1
+   },
+   {
+    "type": "RDM CA",
+    "amount": 112.66,
+    "count": 1
+   }
+  ],
+  "paymentTotal": 704.93,
+  "tips": 94.19,
+  "net": 610.74,
+  "foodSales": 505.66,
+  "foodVolume": 28,
+  "lwbSales": 76.0,
+  "lwbVolume": 8,
+  "sales": 581.66,
+  "covers": 11,
+  "avgCheck": 52.88,
+  "staffChecks": 0,
+  "transfersOut": [],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_09.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-05-03",
+  "dayOfWeek": "SUNDAY",
+  "totalChecks": 7,
+  "openTime": "19:46",
+  "closeTime": "01:10",
+  "reference": 3,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 137.35,
+    "count": 1
+   },
+   {
+    "type": "AMEX",
+    "amount": 295.31,
+    "count": 2
+   },
+   {
+    "type": "MASTCH",
+    "amount": 127.41,
+    "count": 1
+   },
+   {
+    "type": "BIRTHD",
+    "amount": 264.91,
+    "count": 2
+   },
+   {
+    "type": "QSA",
+    "amount": 156.16,
+    "count": 1
+   }
+  ],
+  "paymentTotal": 981.14,
+  "tips": 150.59,
+  "net": 830.55,
+  "foodSales": 657.5,
+  "foodVolume": 37,
+  "lwbSales": 133.5,
+  "lwbVolume": 15,
+  "sales": 791.0,
+  "covers": 19,
+  "avgCheck": 41.63,
+  "staffChecks": 0,
+  "transfersOut": [],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_10.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-06-25",
+  "dayOfWeek": "THURSDAY",
+  "totalChecks": 13,
+  "openTime": "16:44",
+  "closeTime": "23:08",
+  "reference": 32,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 0.0,
+    "count": 0
+   },
+   {
+    "type": "MASTCH",
+    "amount": 639.08,
+    "count": 5
+   },
+   {
+    "type": "BIRTHD",
+    "amount": 448.98,
+    "count": 4
+   },
+   {
+    "type": "VISA",
+    "amount": 458.7,
+    "count": 4
+   }
+  ],
+  "paymentTotal": 1546.76,
+  "tips": 221.93,
+  "net": 1324.83,
+  "foodSales": 1029.24,
+  "foodVolume": 57,
+  "lwbSales": 232.5,
+  "lwbVolume": 26,
+  "sales": 1261.74,
+  "covers": 33,
+  "avgCheck": 38.23,
+  "staffChecks": 1,
+  "transfersOut": [],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_11.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-05-21",
+  "dayOfWeek": "THURSDAY",
+  "totalChecks": 7,
+  "openTime": "19:21",
+  "closeTime": "01:25",
+  "reference": 12,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 0.0,
+    "count": 0
+   },
+   {
+    "type": "BIRTHD",
+    "amount": 438.97,
+    "count": 4
+   },
+   {
+    "type": "VISA",
+    "amount": 700.39,
+    "count": 6
+   }
+  ],
+  "paymentTotal": 1139.36,
+  "tips": 159.81,
+  "net": 979.55,
+  "foodSales": 805.4,
+  "foodVolume": 45,
+  "lwbSales": 127.5,
+  "lwbVolume": 14,
+  "sales": 932.9,
+  "covers": 19,
+  "avgCheck": 49.1,
+  "staffChecks": 0,
+  "transfersOut": [],
+  "transfersIn": []
+ },
+ {
+  "file": "fake_12.jpg",
+  "serverName": "Alex",
+  "businessDate": "2026-06-21",
+  "dayOfWeek": "SUNDAY",
+  "totalChecks": 11,
+  "openTime": "16:26",
+  "closeTime": "21:36",
+  "reference": 29,
+  "payments": [
+   {
+    "type": "CASH",
+    "amount": 58.0,
+    "count": 1
+   },
+   {
+    "type": "VISA",
+    "amount": 334.1,
+    "count": 3
+   },
+   {
+    "type": "DEBITC",
+    "amount": 383.41,
+    "count": 3
+   },
+   {
+    "type": "AMEX",
+    "amount": 317.55,
+    "count": 3
+   },
+   {
+    "type": "RDM CA",
+    "amount": 300.27,
+    "count": 3
+   }
+  ],
+  "paymentTotal": 1393.33,
+  "tips": 196.51,
+  "net": 1196.82,
+  "foodSales": 1065.33,
+  "foodVolume": 59,
+  "lwbSales": 74.5,
+  "lwbVolume": 8,
+  "sales": 1139.83,
+  "covers": 28,
+  "avgCheck": 40.71,
+  "staffChecks": 0,
+  "transfersOut": [],
+  "transfersIn": []
+ }
+]

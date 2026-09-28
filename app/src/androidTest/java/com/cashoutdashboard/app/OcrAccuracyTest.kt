@@ -18,7 +18,7 @@ import org.junit.runner.RunWith
 import java.io.File
 
 /**
- * Runs the real on-device OCR over the sample photos in /cashout_photos and dumps the raw
+ * Runs the real on-device OCR over the sample photos in testdata/photos and dumps the raw
  * OCR lines to the app's external files dir (ocr_dump.json) so the parser can be tuned in JVM tests.
  */
 @RunWith(AndroidJUnit4::class)

@@ -48,7 +48,7 @@ android {
         compose = true
     }
     sourceSets {
-        getByName("androidTest").assets.srcDirs("../cashout_photos", "../testdata")
+        getByName("androidTest").assets.srcDirs("../testdata/photos")
     }
     packaging {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -78,3 +78,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test:runner:1.6.2")
 }
+
+// ParserAccuracyTest reads ../testdata, so changes there must re-run the tests.
+tasks.withType<Test>().configureEach { inputs.dir(rootProject.file("testdata")).withPropertyName("testdata") }

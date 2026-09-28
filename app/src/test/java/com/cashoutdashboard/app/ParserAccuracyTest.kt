@@ -15,13 +15,14 @@ import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import org.junit.Assert.assertEquals
+import org.junit.Assume.assumeTrue
 import org.junit.Test
 import java.io.File
 
 /**
- * Replays real ML Kit output captured from the sample photos (testdata/ocr_dump.json, produced by
- * the OcrAccuracyTest instrumented test) through the parser and compares against the hand-made
- * answer key (testdata/ground_truth.json).
+ * Replays OCR output (ocr_dump.json) through the parser and compares against an answer key
+ * (ground_truth.json). testdata/ holds fake slips made by testdata/make_fake_data.py; real slips,
+ * if you have them, go in the gitignored testdata/private/ and are checked too.
  */
 class ParserAccuracyTest {
     @Serializable
@@ -29,13 +30,22 @@ class ParserAccuracyTest {
 
     private val json = Json { ignoreUnknownKeys = true }
 
-    private fun testdata(name: String): File =
-        listOf(File("../testdata/$name"), File("testdata/$name")).first { it.exists() }
+    private fun testdata(dir: String): File? =
+        listOf(File("../testdata/$dir"), File("testdata/$dir")).firstOrNull { File(it, "ground_truth.json").exists() }
 
     @Test
-    fun parsesAllSamples() {
-        val dumps = json.decodeFromString<List<Dump>>(testdata("ocr_dump.json").readText()).associateBy { it.file }
-        val truth = json.parseToJsonElement(testdata("ground_truth.json").readText()).jsonArray.map { it.jsonObject }
+    fun parsesFakeSamples() = parsesAll(testdata("")!!, "parser_report.txt")
+
+    @Test
+    fun parsesPrivateSamples() {
+        val dir = testdata("private")
+        assumeTrue("No real slips in testdata/private", dir != null)
+        parsesAll(dir!!, "parser_report_private.txt")
+    }
+
+    private fun parsesAll(dir: File, reportName: String) {
+        val dumps = json.decodeFromString<List<Dump>>(File(dir, "ocr_dump.json").readText()).associateBy { it.file }
+        val truth = json.parseToJsonElement(File(dir, "ground_truth.json").readText()).jsonArray.map { it.jsonObject }
         var fields = 0
         var wrong = 0
         val criticalMisses = mutableListOf<String>()
@@ -79,7 +89,7 @@ class ParserAccuracyTest {
         }
         report.appendLine("Field accuracy: ${fields - wrong}/$fields")
         println(report)
-        File("build/parser_report.txt").apply { parentFile?.mkdirs() }.writeText(report.toString())
+        File("build/$reportName").apply { parentFile?.mkdirs() }.writeText(report.toString())
         assertEquals("Critical fields misread: $criticalMisses", 0, criticalMisses.size)
     }
 
