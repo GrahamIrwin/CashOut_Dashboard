@@ -254,6 +254,7 @@ class StatsTest {
         )
         val out = Stats.insights(list, emptyList(), false)
         assertTrue(out.any { it.kind == InsightKind.BEST_DAY && it.headline == "Sundays pay best" })
+        assertEquals("Pick up more Sundays", out.single { it.kind == InsightKind.BEST_DAY }.action)
         // With a single Sunday there's no qualifying comparison.
         val thin = Stats.insights(list.drop(1) + shift("2026-09-08", 1000.0, 100.0), emptyList(), false)
         assertTrue(thin.none { it.kind == InsightKind.BEST_DAY })
@@ -316,5 +317,6 @@ class StatsTest {
         val busy = Stats.insights(list, emptyList(), false).single { it.kind == InsightKind.BUSY_NIGHTS }
         assertEquals("Busy nights tip better", busy.headline)
         assertEquals(Kpi.TIP_PCT, busy.kpi)
+        assertEquals("Go after the busy shifts", busy.action)
     }
 }

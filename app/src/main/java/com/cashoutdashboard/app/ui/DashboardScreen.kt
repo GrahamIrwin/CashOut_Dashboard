@@ -78,6 +78,8 @@ import com.cashoutdashboard.app.ui.dashboard.insightsTab
 import com.cashoutdashboard.app.ui.dashboard.daysTab
 import com.cashoutdashboard.app.ui.dashboard.overviewTab
 import com.cashoutdashboard.app.ui.dashboard.recordsTab
+import com.cashoutdashboard.app.ui.dashboard.simpleTab
+import com.cashoutdashboard.app.data.GoalPeriod
 import com.cashoutdashboard.app.ui.dashboard.trendsTab
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -174,6 +176,8 @@ fun DashboardScreen(vm: AppViewModel, onOpenShift: (String) -> Unit, onAdd: () -
             onSelect = { p -> if (p == Period.CUSTOM) showPicker = true else periodName = p.name },
         )
         val openMetric: (Kpi) -> Unit = { detailName = it.name }
+        val saveGoal: (Double?, GoalPeriod) -> Unit = { amount, gp -> vm.updateSettings { it.copy(goalAmount = amount, goalPeriod = gp) } }
+        val listPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 96.dp)
         AnimatedContent(
             targetState = detail,
             contentKey = { it != null },
@@ -194,6 +198,10 @@ fun DashboardScreen(vm: AppViewModel, onOpenShift: (String) -> Unit, onAdd: () -
                     onBack = { detailName = null },
                     onOpenShift = onOpenShift,
                 )
+            } else if (!settings.advancedDashboard) {
+                LazyColumn(Modifier.fillMaxSize(), contentPadding = listPadding, verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    simpleTab(data, settings, today, onOpenMetric = openMetric, onSaveGoal = saveGoal)
+                }
             } else {
                 Column(Modifier.fillMaxSize()) {
                     PillTabs(
@@ -205,7 +213,7 @@ fun DashboardScreen(vm: AppViewModel, onOpenShift: (String) -> Unit, onAdd: () -
                     HorizontalPager(pager, Modifier.weight(1f), beyondBoundsPageCount = 1) { page ->
                         LazyColumn(
                             Modifier.fillMaxSize(),
-                            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 96.dp),
+                            contentPadding = listPadding,
                             verticalArrangement = Arrangement.spacedBy(12.dp),
                         ) {
                             when (page) {
@@ -213,9 +221,8 @@ fun DashboardScreen(vm: AppViewModel, onOpenShift: (String) -> Unit, onAdd: () -
                                     data, settings, today,
                                     onOpenMetric = openMetric,
                                     onOpenInsights = { scope.launch { pager.animateScrollToPage(INSIGHTS_TAB, animationSpec = tween(280, easing = FastOutSlowInEasing)) } },
-                                ) { amount, gp ->
-                                    vm.updateSettings { it.copy(goalAmount = amount, goalPeriod = gp) }
-                                }
+                                    onSaveGoal = saveGoal,
+                                )
                                 1 -> insightsTab(data, openMetric, onOpenShift)
                                 2 -> trendsTab(data, onOpenShift)
                                 3 -> daysTab(data, onOpenShift)

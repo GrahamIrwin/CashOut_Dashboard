@@ -48,6 +48,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cashoutdashboard.app.data.AppSettings
@@ -91,6 +92,53 @@ internal fun LazyListScope.overviewTab(
     item(key = "insights") { InsightsPreview(d, onOpenMetric, onOpenInsights) }
     item(key = "pace") { PaceCard(d, settings, today) }
     if (!hasGoal) item(key = "goal") { GoalCard(d, settings, today, onSaveGoal) }
+}
+
+/** The default dashboard: the headline number, the goal, and what to do next. Everything else lives in advanced. */
+internal fun LazyListScope.simpleTab(
+    d: DashData,
+    settings: AppSettings,
+    today: LocalDate,
+    onOpenMetric: (Kpi) -> Unit,
+    onSaveGoal: (Double?, GoalPeriod) -> Unit,
+) {
+    if (d.shifts.isEmpty()) {
+        item(key = "empty") { EmptyNote(Icons.AutoMirrored.Filled.ReceiptLong, "No shifts in this period", "Pick another period above to see your stats.") }
+    } else {
+        item(key = "hero") { HeroCard(d) { onOpenMetric(Kpi.TIPS) } }
+    }
+    item(key = "goal") { GoalCard(d, settings, today, onSaveGoal) }
+    if (d.shifts.isNotEmpty()) item(key = "next") { NextStepsCard(d, onOpenMetric) }
+    item(key = "more") {
+        Text(
+            "Want every chart and stat? Turn on Advanced dashboard in Settings.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+        )
+    }
+}
+
+/** Only the insights you can act on, led by what to do about them. */
+@Composable
+private fun NextStepsCard(d: DashData, onOpenMetric: (Kpi) -> Unit) {
+    val steps = remember(d.shifts, d.previous, d.takeHome) {
+        Stats.insights(d.shifts, d.previous, d.takeHome).mapNotNull { i -> i.action?.let { i.copy(headline = it) } }.take(3)
+    }
+    DashCard("How to earn more", "Based on your shifts this period") {
+        if (steps.isEmpty()) {
+            Text(
+                "Log a few more shifts with start and end times, and suggestions for earning more will show up here.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        steps.forEachIndexed { i, step ->
+            if (i > 0) HorizontalDivider(Modifier.padding(start = 54.dp), color = MaterialTheme.colorScheme.outlineVariant)
+            InsightRow(step, onOpenMetric)
+        }
+    }
 }
 
 @OptIn(ExperimentalLayoutApi::class)

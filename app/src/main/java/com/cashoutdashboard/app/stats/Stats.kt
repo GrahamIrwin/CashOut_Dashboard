@@ -175,8 +175,11 @@ enum class DayPart(val label: String, val hint: String) {
 
 enum class InsightKind { BEST_DAY, PER_SHIFT_CHANGE, TIP_RATE_CHANGE, MOMENTUM, TIME_OF_DAY, SHIFT_LENGTH, BUSY_NIGHTS, BEST_MONTH, GUEST_VALUE, TYPICAL_RANGE }
 
-/** One observation: a short [headline], the numbers behind it, and the measure to open for more. */
-data class Insight(val kind: InsightKind, val headline: String, val detail: String, val kpi: Kpi? = null)
+/**
+ * One observation: a short [headline], the numbers behind it, and the measure to open for more.
+ * [action] is set when there's something concrete to do about it (the simple dashboard shows only those).
+ */
+data class Insight(val kind: InsightKind, val headline: String, val detail: String, val kpi: Kpi? = null, val action: String? = null)
 
 /** The measure a trend chart plots, one at a time (never a dual axis). */
 enum class Metric(val label: String) {
@@ -621,6 +624,7 @@ object Stats {
                 out += Insight(
                     InsightKind.BEST_DAY, "${plural(best.day)} pay best",
                     "${m0(best.avgTips)} a shift, vs ${m0(overall)} across all your shifts.", Kpi.TIPS_PER_SHIFT,
+                    action = "Pick up more ${plural(best.day)}",
                 )
             }
         }
@@ -678,6 +682,7 @@ object Stats {
                 out += Insight(
                     InsightKind.TIME_OF_DAY, "${bestPart!!.label} shifts earn the most",
                     "${m0(bestAvg)} a shift, vs ${m0(worstAvg)} for ${worstPart!!.label.lowercase()}.",
+                    action = "Ask for ${bestPart.label.lowercase()} shifts",
                 )
             }
         }
@@ -697,6 +702,7 @@ object Stats {
                         if (lr > sr) "Longer shifts pay better per hour" else "Shorter shifts pay better per hour",
                         "${h}h+ shifts: ${m2(lr)}/hr. Shorter: ${m2(sr)}/hr.",
                         Kpi.TIPS_PER_HOUR,
+                        action = if (lr > sr) "Say yes to longer shifts" else "Take the early cut when it's slow",
                     )
                 }
             }
@@ -713,6 +719,7 @@ object Stats {
                     if (busy > slow) "Busy nights tip better" else "Your tip rate dips on busy nights",
                     "${p1(busy)} on your busier half of shifts, ${p1(slow)} on slower ones.",
                     Kpi.TIP_PCT,
+                    action = if (busy > slow) "Go after the busy shifts" else "Guard your service when it's slammed",
                 )
             }
         }

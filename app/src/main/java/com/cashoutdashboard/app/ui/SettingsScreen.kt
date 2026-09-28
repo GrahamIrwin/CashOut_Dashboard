@@ -11,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Backup
+import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.icons.filled.EventRepeat
 import androidx.compose.material.icons.filled.Flag
@@ -52,6 +53,14 @@ fun SettingsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
         ListGroup("Dashboard") {
+            ListRow(
+                Icons.Filled.Dashboard,
+                "Advanced dashboard",
+                "Show every tab, chart and stat",
+                onClick = { vm.updateSettings { it.copy(advancedDashboard = !it.advancedDashboard) } },
+                trailing = { Switch(settings.advancedDashboard, { v -> vm.updateSettings { it.copy(advancedDashboard = v) } }) },
+            )
+            ListDivider()
             ListRow(
                 Icons.Filled.Wallet,
                 "Use cash take-home",
