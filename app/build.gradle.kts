@@ -1,8 +1,15 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("org.jetbrains.kotlin.plugin.serialization")
+}
+
+// Signing passwords live in local.properties (gitignored), never in the repo.
+val localProps = Properties().apply {
+    rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) }
 }
 
 android {
@@ -23,9 +30,9 @@ android {
     signingConfigs {
         create("release") {
             storeFile = rootProject.file("keystore/release.jks")
-            storePassword = "cashout123"
+            storePassword = localProps.getProperty("storePassword")
             keyAlias = "cashout"
-            keyPassword = "cashout123"
+            keyPassword = localProps.getProperty("keyPassword")
         }
     }
 
@@ -46,6 +53,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     sourceSets {
         getByName("androidTest").assets.srcDirs("../testdata/photos")

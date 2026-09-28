@@ -3,25 +3,37 @@
 About 5 minutes from download to your first dashboard. Requires Android 8 or newer.
 Most phones from the last several years qualify.
 
-## 1. Get the app onto your phone
+## 1. Install Obtainium (one time)
 
-The app is the file `CashoutDashboard.apk` (about 25 MB), attached to the [latest release](https://github.com/GrahamIrwin/CashOut_Dashboard/releases/latest). Pick whichever of these is easiest:
+Cashout isn't on the Play Store. [Obtainium](https://github.com/ImranR98/Obtainium) is a free app
+that installs it straight from GitHub and tells you when there's an update.
 
-- **Google Drive:** upload the APK from your computer, then open Drive on the phone and tap the file.
-- **Email:** send it to yourself, then open the email on the phone and tap the attachment.
-- **USB cable:** plug the phone in, choose **File transfer** on the phone's notification, and copy
-  the APK into `Download`. Then open the **My Files** or **Files** app on the phone and tap it.
-
-## 2. Install it
-
-1. Tap the APK. Android will say it can't install apps from this source. Tap **Settings**, turn on
-   **Allow from this source**, then press back.
-2. Tap **Install**.
+1. On your phone, open the [latest Obtainium release](https://github.com/ImranR98/Obtainium/releases/latest)
+   and tap the file with **arm64-v8a** in its name to download it.
+2. Tap the download. Android will say it can't install apps from this source. Tap **Settings**, turn
+   on **Allow from this source**, then press back and tap **Install**.
 3. If **Google Play Protect** warns that it doesn't recognise the app, tap **More details**, then
    **Install anyway**. It's flagged only because it didn't come from the Play Store.
-4. Tap **Open**, or find **Cashout** in your app drawer.
+4. Open Obtainium. Allow notifications when asked. That's how it tells you about updates.
 
-> Afterwards you can turn "Allow from this source" back off. The app keeps working.
+## 2. Add Cashout in Obtainium
+
+1. In Obtainium, tap **Add App**.
+2. Paste `https://github.com/GrahamIrwin/CashOut_Dashboard` into **App Source URL** and tap **Add**.
+3. Tap **Install**. Android asks once more for permission, this time for Obtainium to install
+   apps. Allow it, the same way as in step 1. Play Protect may warn again, so tap **Install anyway**.
+4. Find **Cashout** in your app drawer.
+
+Already have Cashout from an earlier download? Add it anyway. Obtainium finds the copy you have,
+and your shifts are kept.
+
+<details>
+<summary>Rather not use Obtainium?</summary>
+
+Download `CashoutDashboard.apk` from the [latest release](https://github.com/GrahamIrwin/CashOut_Dashboard/releases/latest)
+on your phone and tap it. Allow the install the same way as in step 1. You won't get update
+notifications. To update, download and install the new APK over the old one.
+</details>
 
 ## 3. Add your first cashout
 
@@ -70,7 +82,8 @@ In the **Settings** tab:
 
 ## Keep your data safe
 
-All data lives **only on this phone**. Nothing is uploaded anywhere.
+All data lives **only on this phone**. The app has no internet access, so nothing is uploaded anywhere
+([privacy policy](PRIVACY.md)).
 
 - **Settings → Back up** saves a `.json` file. Put it somewhere like Google Drive.
   **Restore from backup** brings it back on a new or reset phone.
@@ -79,15 +92,17 @@ All data lives **only on this phone**. Nothing is uploaded anywhere.
 
 ## Updating to a new version
 
-Install the new `CashoutDashboard.apk` the same way as before, over the existing app. Don't
-uninstall first. Your shifts are kept.
+Obtainium checks for updates in the background and sends you a notification. Tap it, then
+**Update**. To check yourself, open Obtainium and pull down on the list. Your shifts are kept.
+Don't uninstall first.
 
 ## Troubleshooting
 
 | Problem | Fix |
 |---|---|
 | "App not installed" | An older copy signed with a different key is on the phone. Back up, uninstall it, then install again. |
-| "There was a problem parsing the package" | The download was cut short. Copy the APK over again. |
+| "There was a problem parsing the package" | The download was cut short. Download it again. |
+| Obtainium says "rate limit" | GitHub limits how often a phone can check. Wait an hour and try again. |
 | Lots of blank fields after a scan | Retake the photo flatter, closer, with no glare. Or tap **Retry**. |
 | "Couldn't read this one" | Tap **Retry**, or type the numbers into the fields below it. |
 

@@ -42,7 +42,7 @@ class OcrAccuracyTest {
             val best = Dump(name, rotation, scanner.ocrLines(bmp, rotation))
             dumps += best
             val r = ReceiptParser.parse(RowBuilder.rows(best.lines))
-            Log.i("OcrAccuracy", "$name rot=${best.rotation} score=${r.score} date=${r.shift.date} sales=${r.shift.sales} tips=${r.shift.tips} warn=${r.warnings}")
+            Log.i("OcrAccuracy", "$name rot=${best.rotation} score=${r.score} date=${r.shift.date} sales=${r.shift.sales} tips=${r.shift.tips} missing=${r.missing} notes=${r.notes}")
         }
         val out = File(appCtx.getExternalFilesDir(null), "ocr_dump.json")
         out.writeText(Json.encodeToString(dumps))

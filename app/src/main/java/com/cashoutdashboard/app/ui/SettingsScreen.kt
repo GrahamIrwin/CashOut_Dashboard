@@ -33,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.cashoutdashboard.app.AppViewModel
+import com.cashoutdashboard.app.BuildConfig
 import java.time.LocalDate
 
 @Composable
@@ -104,7 +105,7 @@ fun SettingsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         }
 
         Text(
-            "Cashout Dashboard 1.3\nEverything is read and stored on your phone.",
+            "Cashout Dashboard ${BuildConfig.VERSION_NAME}\nNo internet access. Everything is read and stored on your phone.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
